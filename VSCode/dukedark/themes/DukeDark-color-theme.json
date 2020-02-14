@@ -2,13 +2,16 @@
 	"name": "DukeDark",
 	"type": "dark",
 	"colors": {
-		"editor.background": "#003232",
+		"editor.background": "#001E28",
 		"editor.foreground": "#ffffff",
 
 		"sideBar.background": "#003c64",
 		"sideBarSectionHeader.foreground":"#ffffff",
 		"sideBarSectionHeader.background": "#00283c",
 		"sideBar.foreground":"#DCDEDF",
+
+		"tab.activeBorderTop": "#fd971f",
+		"tab.activeBackground": "#001E28",
 
 		"list.focusBackground": "#6b9801",
 		"list.hoverBackground": "#6b9801",
@@ -170,7 +173,7 @@
 		{
 			"scope": "markup.deleted",
 			"settings": {
-				"foreground": "#ce9178"
+				"foreground": "#fd971f"
 			}
 		},
 		{
@@ -182,19 +185,23 @@
 		{
 			"scope": "punctuation.definition.quote.begin.markdown",
 			"settings": {
-				"foreground": "#6A9955"
+				"foreground": "#a0f000"
 			}
 		},
 		{
 			"scope": "punctuation.definition.list.begin.markdown",
 			"settings": {
-				"foreground": "#6796e6"
+				"foreground": "#a0c8ff"
 			}
 		},
 		{
-			"scope": "markup.inline.raw",
+			"name": "backticks strings",
+			"scope": [
+				"markup.inline.raw",
+				"string.interpolated.backtick.shell"
+			],	
 			"settings": {
-				"foreground": "#ce9178"
+				"foreground": "#fd971f"
 			}
 		},
 		{
