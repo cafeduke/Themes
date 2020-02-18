@@ -1,0 +1,452 @@
+{
+	"name": "DukeDark",
+	"type": "dark",
+	"colors": {
+		"editor.background": "#001E28",
+		"editor.foreground": "#ffffff",
+
+		"sideBar.background": "#003c64",
+		"sideBarSectionHeader.foreground":"#ffffff",
+		"sideBarSectionHeader.background": "#00283c",
+		"sideBar.foreground":"#DCDEDF",
+
+		"tab.activeBorderTop": "#fd971f",
+		"tab.activeBackground": "#001E28",
+
+		"list.focusBackground": "#6b9801",
+		"list.hoverBackground": "#6b9801",
+		"list.activeSelectionBackground": "#0078c8",                        
+		"list.inactiveSelectionBackground": "#00538a",
+		"activityBar.background": "#00283c",
+
+		"gitDecoration.addedResourceForeground": "#ffffff",      
+		"gitDecoration.modifiedResourceForeground": "#ffffff",
+		"gitDecoration.deletedResourceForeground": "#ffffff",
+		"gitDecoration.untrackedResourceForeground": "#ffffff",
+		"gitDecoration.ignoredResourceForeground": "#ffffff",
+		"gitDecoration.conflictingResourceForeground": "#ffffff",
+		"gitDecoration.submoduleResourceForeground": "#ffffff",
+	},
+	"tokenColors": [
+		{
+			"name": "Built-in functions",
+			"scope":[ "support.function.builtin"],
+			"settings": { "fontStyle": "bold", "foreground":"#00c8a0" }
+		},
+		{
+			"scope": [
+				"meta.embedded",
+				"source.groovy.embedded"
+			],
+			"settings": {
+				"foreground": "#D4D4D4"
+			}
+		},
+		{
+			"scope": "emphasis",
+			"settings": {
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"scope": "strong",
+			"settings": {
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"scope": "header",
+			"settings": {
+				"foreground": "#000080"
+			}
+		},
+		{
+			"name":"Duke, python doc",
+			"scope": [
+				"comment",
+				"string.quoted.docstring.multi.python"
+			],
+			"settings": {
+				"foreground": "#608b4e"
+			}
+		},
+		{
+			"scope": "constant.language",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#fd971f"
+			}
+		},
+		{
+			"name": "Numbers",
+			"scope": [
+				"constant.numeric",
+				"entity.name.operator.custom-literal.number",
+				"variable.other.enummember",
+				"keyword.operator.plus.exponent",
+				"keyword.operator.minus.exponent"
+			],
+			"settings": {
+				"foreground": "#b478ff"
+			}
+		},
+		{
+			"scope": "constant.regexp",
+			"settings": {
+				"foreground": "#b478ff"
+			}
+		},
+		{
+			"name": "Tag name, CSS selector name",
+			"scope": [ 
+				"entity.name.tag",
+				"entity.name.tag.css",
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"name": "XML attribute name",
+			"scope": "entity.other.attribute-name",
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#ffffff"
+			}
+		},
+		{
+			"scope": [
+				"entity.other.attribute-name.class.css",
+				"entity.other.attribute-name.class.mixin.css",
+				"entity.other.attribute-name.id.css",
+				"entity.other.attribute-name.parent-selector.css",
+				"entity.other.attribute-name.pseudo-class.css",
+				"entity.other.attribute-name.pseudo-element.css",
+				"source.css.less entity.other.attribute-name.id",
+				"entity.other.attribute-name.attribute.scss",
+				"entity.other.attribute-name.scss"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"scope": "invalid",
+			"settings": {
+				"foreground": "#f44747"
+			}
+		},
+		{
+			"scope": "markup.underline",
+			"settings": {
+				"fontStyle": "underline"
+			}
+		},
+		{
+			"scope": "markup.bold",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"scope": "markup.heading",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"scope": "markup.italic",
+			"settings": {
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"scope": "markup.inserted",
+			"settings": {
+				"foreground": "#b5cea8"
+			}
+		},
+		{
+			"scope": "markup.deleted",
+			"settings": {
+				"foreground": "#fd971f"
+			}
+		},
+		{
+			"scope": "markup.changed",
+			"settings": {
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"scope": "punctuation.definition.quote.begin.markdown",
+			"settings": {
+				"foreground": "#a0f000"
+			}
+		},
+		{
+			"scope": "punctuation.definition.list.begin.markdown",
+			"settings": {
+				"foreground": "#a0c8ff"
+			}
+		},
+		{
+			"name": "backticks strings",
+			"scope": [
+				"markup.inline.raw",
+				"string.interpolated.backtick.shell"
+			],	
+			"settings": {
+				"foreground": "#fd971f"
+			}
+		},
+		{
+			"name": "brackets of XML/HTML tags",
+			"scope": "punctuation.definition.tag",
+			"settings": {
+				"foreground": "#808080"
+			}
+		},
+		{
+			"scope": [
+				"meta.preprocessor",
+				"entity.name.function.preprocessor"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#00c8a0"
+			}
+		},
+		{
+			"scope": "meta.preprocessor.string",
+			"settings": {
+				"foreground": "#a0f000"
+			}
+		},
+		{
+			"scope": "meta.preprocessor.numeric",
+			"settings": {
+				"foreground": "#b5cea8"
+			}
+		},
+		{
+			"scope": "meta.structure.dictionary.key.python",
+			"settings": {
+				"foreground": "#9cdcfe"
+			}
+		},
+		{
+			"scope": "meta.diff.header",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"name":"XML element name",
+			"scope": "meta.tag.preprocessor.xml",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},		
+		{
+			"name": "Duke, defualt storage data types",
+			"scope": [
+				"storage",
+				"storage.type",
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"name":"Duke, user data types",
+			"scope": [
+				"storage.type.java",
+				"storage.type.generic.java",
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#50dc50"
+			}
+		},
+		{
+			"scope": [
+				"storage.modifier",
+				"keyword.operator.noexcept"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"name":"Duke, all strings",
+			"scope": [
+				"string",
+				"string.tag",
+				"string.value",
+				"string.regexp",
+				"string.quoted.double.xml",
+				"entity.name.operator.custom-literal.string",
+				"meta.embedded.assembly"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#a0f000"
+			}
+		},
+		{
+			"name": "String interpolation",
+			"scope": [
+				"punctuation.definition.template-expression.begin",
+				"punctuation.definition.template-expression.end",
+				"punctuation.section.embedded"
+			],
+			"settings": {
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"name":"Duke, annotation",
+			"scope": [
+				"punctuation.definition.annotation",
+				"storage.type.annotation"
+			],
+			"settings": {
+				"foreground": "#fd971f",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "Reset JavaScript string interpolation expression",
+			"scope": [
+				"meta.template.expression"
+			],
+			"settings": {
+				"foreground": "#d4d4d4"
+			}
+		},
+		{
+			"name": "Duke, attribute name in CSS like config",
+			"scope": [
+				"variable.css",
+				"variable.scss",
+				"variable.other.less",
+				"source.coffee.embedded",
+				"support.type.property-name.css",
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#50dc50"
+			}
+		},
+		{
+			"name": "Duke, All keyword and core type like elements",
+			"scope": [
+				"keyword",
+				"support.type.vendored.property-name",
+				"support.type.property-name.json",
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"scope": "keyword.control",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"scope": "keyword.operator",
+			"settings": {
+				"foreground": "#d4d4d4"
+			}
+		},
+		{
+			"scope": [
+				"keyword.operator.new",
+				"keyword.operator.expression",
+				"keyword.operator.cast",
+				"keyword.operator.sizeof",
+				"keyword.operator.alignof",
+				"keyword.operator.typeid",
+				"keyword.operator.alignas",
+				"keyword.operator.instanceof",
+				"keyword.operator.logical.python",
+				"keyword.operator.wordlike"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"name": "Unit like px in CSS",
+			"scope": "keyword.other.unit",
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#ffffff"
+			}
+		},
+		{
+			"scope": [
+				"punctuation.section.embedded.begin.php",
+				"punctuation.section.embedded.end.php"
+			],
+			"settings": {
+				"foreground": "#5aaae6"
+			}
+		},
+		{
+			"scope": "support.function.git-rebase",
+			"settings": {
+				"foreground": "#9cdcfe"
+			}
+		},
+		{
+			"scope": "constant.sha.git-rebase",
+			"settings": {
+				"foreground": "#b5cea8"
+			}
+		},
+		{
+			"name": "coloring of the Java import and package identifiers",
+			"scope": [
+				"storage.modifier.import.java",
+				"variable.language.wildcard.java",
+				"storage.modifier.package.java"
+			],
+			"settings": {
+				"foreground": "#d4d4d4"
+			}
+		},
+		{
+			"name": "this.self",
+			"scope": "variable.language",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#fd971f"
+			}
+		},
+		{
+			"name": "Duke, types inside comments",
+			"scope": [ 
+				"keyword.other.documentation.javadoc"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#608B4e"
+			}
+		},
+	]
+}
