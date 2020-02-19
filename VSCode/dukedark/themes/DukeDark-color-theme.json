@@ -4,6 +4,10 @@
 	"colors": {
 		"editor.background": "#001E28",
 		"editor.foreground": "#ffffff",
+		"editor.selectionBackground": "#135564",
+		"editor.selectionHighlightBackground": "#135564",
+		"editor.findMatchBackground": "#783c00",
+		"editor.findMatchHighlightBackground": "#005028",
 
 		"sideBar.background": "#003c64",
 		"sideBarSectionHeader.foreground":"#ffffff",
