@@ -1,0 +1,97 @@
+hotkeys:
+  shell: {}
+  copy:
+    - Ctrl-Insert
+  paste:
+    - Shift-Insert
+  home:
+    - Home
+  end:
+    - End
+  ctrl-c: []
+  toggle-window: []
+  profile: {}
+  next-tab:
+    - Ctrl-Shift-Right
+  previous-tab:
+    - Ctrl-Shift-Left
+  toggle-fullscreen: []
+  clear:
+    - Ctrl-Shift-H
+  rename-tab:
+    - Ctrl-Shift-R
+    - F2
+  close-tab:
+    - Ctrl-Shift-W
+terminal:
+  colorScheme: &ref_0
+    name: DukeUbuntu
+    foreground: '#ffffff'
+    background: '#2d0023'
+    cursor: '#fd971f'
+    colors:
+      - '#000000'
+      - '#50DC50'
+      - '#5AAAE6'
+      - '#fd971f'
+      - '#886484'
+      - '#66D9EF'
+      - '#5AAAE6'
+      - '#ffffff'
+      - '#555753'
+      - '#ff5500'
+      - '#98e024'
+      - '#fce94f'
+      - '#5AAAE6'
+      - '#66D9EF'
+      - '#66D9EF'
+      - '#ffffff'
+  font: Consolas NF
+  background: colorScheme
+  fontSize: 16
+  environment: {}
+  rightClick: paste
+  copyOnSelect: true
+  frontend: xterm
+  ligatures: false
+  bell: 'off'
+  customColorSchemes:
+    - name: DukeMonokai
+      foreground: '#F8F8F0'
+      background: '#282828'
+      cursor: 'rgba(248, 248, 240, 0.5)'
+      colors:
+        - '#282828'
+        - '#50DC50'
+        - '#63befe'
+        - '#ffff00'
+        - '#608B4E'
+        - '#66D9EF'
+        - '#38CCD1'
+        - '#ffffff'
+        - '#49483E'
+        - '#F92672'
+        - '#A6E22E'
+        - '#ffff00'
+        - '#AE81FF'
+        - '#66D9EF'
+        - '#38CCD1'
+        - '#ffffff'
+        - '#F8F8F0'
+    - *ref_0
+  cursor: beam
+  cursorBlink: true
+  profile: zsh
+  recoverTabs: false
+appearance:
+  theme: Altair
+  opacity: 1
+  frame: native
+  css: ''
+  dock: 'off'
+pluginBlacklist:
+  - theme-hype
+titleControl:
+  replacePattern: \t
+enableWelcomeTab: false
+enableAnalytics: false
