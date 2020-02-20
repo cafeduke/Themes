@@ -17,5 +17,10 @@
                 "path": "./themes/DukeDark-color-theme.json"
             }
         ]
-    }
+    },
+    "icon": "./images/dukedark_icon_128.png",
+    "galleryBanner": {
+      "color": "#003c64",
+      "theme": "light"
+    }    
 }
