@@ -6,4 +6,4 @@ fi
 
 cd $HOME/GitProjects/vscode-dukedark-theme
 vsce package -o $HOME/GitProjects/Themes/VSCode/build
-code --install-extension $HOME/GitProjects/Themes/VSCode/build/dukedark-0.0.1.vsix
+code --install-extension $HOME/GitProjects/Themes/VSCode/build/dukedark-0.0.2.vsix
