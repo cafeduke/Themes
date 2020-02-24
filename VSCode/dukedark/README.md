@@ -3,6 +3,8 @@ A dark color theme inspired by Dark(Visual Studio) and Slack themes.
 
 ## Code Screenshot
 
+
+
 - Explorer window open (Javascript)
 ![CodeScreenshot](https://raw.githubusercontent.com/cafeduke/Themes/master/images/dukedark_js.jpg)
 
