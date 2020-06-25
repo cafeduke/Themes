@@ -190,8 +190,8 @@
 
   #################################[ os_icon: os identifier ]##################################
   # OS identifier color.
-  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=130
+  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=208
+  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=238
   # Make the icon bold.
   typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='%B${P9K_CONTENT// }'
 
@@ -348,7 +348,7 @@
 
     if (( $1 )); then
       # Styling for up-to-date Git status.
-      local       meta='%f'     # default foreground
+      local       meta='%15F'     # default foreground
       local      clean='%15F'   # green foreground
       local   modified='%15F'  # yellow foreground
       local  untracked='%15F'   # blue foreground
@@ -436,7 +436,7 @@
   # Powerlevel10k has to fall back to using vcs_info.
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND='white'
   typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=022
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='white'
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=222
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=130
   typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
   typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=094

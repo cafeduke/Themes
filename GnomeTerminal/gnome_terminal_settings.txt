@@ -1,0 +1,121 @@
+[legacy]
+new-terminal-mode='tab'
+schema-version=uint32 3
+theme-variant='system'
+
+[legacy/keybindings]
+copy='<Primary>Insert'
+next-tab='<Primary>Right'
+paste='<Shift>Insert'
+prev-tab='<Primary>Left'
+
+[legacy/profiles:]
+default='5466e0e6-2c5c-4c88-afb3-d8b9c7bcd23a'
+list=['5466e0e6-2c5c-4c88-afb3-d8b9c7bcd23a', '3cc5de86-663c-4e94-9af1-157f26b0584a', '93697959-4112-4837-80a7-d54c0bbf5fe4', '91905b2a-99fa-4cb2-87aa-e8918d764db8', '225ed488-2433-4deb-b38d-d296da32d146', 'dd076973-7755-4a9e-b441-b81f0a6fa2d7', 'd3debfa4-07be-4f55-8d7e-e5a92553ee29']
+
+[legacy/profiles:/:225ed488-2433-4deb-b38d-d296da32d146]
+audible-bell=false
+background-color='rgb(0,40,60)'
+background-transparency-percent=5
+bold-is-bright=true
+cursor-shape='ibeam'
+font='Consolas NF 12'
+foreground-color='rgb(255,255,255)'
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(102,102,102)', 'rgb(253,151,31)', 'rgb(160,240,0)', 'rgb(255,220,80)', 'rgb(160,200,255)', 'rgb(180,120,255)', 'rgb(0,200,160)', 'rgb(238,238,236)']
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=false
+visible-name='DukeBlue'
+
+[legacy/profiles:/:3cc5de86-663c-4e94-9af1-157f26b0584a]
+audible-bell=false
+background-color='rgb(50,30,0)'
+bold-is-bright=false
+cursor-shape='ibeam'
+font='Consolas NF 12'
+foreground-color='rgb(255,255,255)'
+palette=['rgb(46,52,54)', 'rgb(255,149,49)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(255,255,255)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+use-system-font=false
+use-theme-colors=false
+visible-name='DukeBrown'
+
+[legacy/profiles:/:5466e0e6-2c5c-4c88-afb3-d8b9c7bcd23a]
+audible-bell=false
+background-color='rgb(50,0,60)'
+background-transparency-percent=5
+bold-color-same-as-fg=true
+bold-is-bright=true
+cursor-shape='ibeam'
+custom-command='zsh'
+font='Consolas NF 12'
+foreground-color='rgb(255,255,255)'
+login-shell=true
+palette=['rgb(46,52,54)', 'rgb(255,140,140)', 'rgb(0,220,80)', 'rgb(255,220,80)', 'rgb(52,101,164)', 'rgb(180,120,255)', 'rgb(0,220,80)', 'rgb(211,215,207)', 'rgb(102,102,102)', 'rgb(253,151,31)', 'rgb(160,240,0)', 'rgb(255,220,80)', 'rgb(160,200,255)', 'rgb(180,120,255)', 'rgb(160,240,0)', 'rgb(238,238,236)']
+scrollback-lines=100000
+scrollback-unlimited=true
+use-custom-command=true
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=false
+visible-name='DukeGrape'
+
+[legacy/profiles:/:91905b2a-99fa-4cb2-87aa-e8918d764db8]
+audible-bell=false
+background-color='rgb(0,50,30)'
+background-transparency-percent=5
+bold-is-bright=true
+cursor-shape='ibeam'
+font='Consolas NF 12'
+foreground-color='rgb(255,255,255)'
+palette=['rgb(46,52,54)', 'rgb(240,120,120)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(0,220,180)', 'rgb(211,215,207)', 'rgb(102,102,102)', 'rgb(253,151,31)', 'rgb(160,240,0)', 'rgb(255,220,80)', 'rgb(160,200,255)', 'rgb(180,120,255)', 'rgb(0,220,180)', 'rgb(238,238,236)']
+scrollback-unlimited=true
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=false
+visible-name='DukeGreen'
+
+[legacy/profiles:/:93697959-4112-4837-80a7-d54c0bbf5fe4]
+audible-bell=false
+background-color='rgb(40,50,40)'
+bold-is-bright=true
+cursor-blink-mode='system'
+cursor-shape='ibeam'
+font='Consolas NF 12'
+foreground-color='rgb(255,255,255)'
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+use-system-font=false
+use-theme-colors=false
+visible-name='Test'
+
+[legacy/profiles:/:d3debfa4-07be-4f55-8d7e-e5a92553ee29]
+audible-bell=false
+background-color='rgb(0,40,80)'
+background-transparency-percent=5
+bold-is-bright=true
+cursor-shape='ibeam'
+font='Consolas NF 12'
+foreground-color='rgb(255,255,255)'
+palette=['rgb(46,52,54)', 'rgb(255,140,140)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(102,102,102)', 'rgb(253,151,31)', 'rgb(160,240,0)', 'rgb(255,220,80)', 'rgb(160,200,255)', 'rgb(180,120,255)', 'rgb(0,200,160)', 'rgb(238,238,236)']
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=false
+visible-name='DukeBlueRoyal'
+
+[legacy/profiles:/:dd076973-7755-4a9e-b441-b81f0a6fa2d7]
+audible-bell=false
+background-color='rgb(48,10,36)'
+background-transparency-percent=5
+bold-is-bright=true
+cursor-shape='ibeam'
+font='Consolas NF 12'
+foreground-color='rgb(255,255,255)'
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(102,102,102)', 'rgb(253,151,31)', 'rgb(160,240,0)', 'rgb(255,220,80)', 'rgb(160,200,255)', 'rgb(180,120,255)', 'rgb(0,200,160)', 'rgb(238,238,236)']
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=false
+visible-name='DukeUbuntu'
