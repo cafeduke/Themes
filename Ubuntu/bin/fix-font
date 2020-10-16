@@ -1,0 +1,14 @@
+#!/bin/bash
+OLD_IFS="$IFS"
+IFS='|'
+for x in `ls -1 *.ttf | tr -s '\n' '|'`
+do
+   if [[ $x =~ " " ]]
+   then
+      newFile=`echo "$x" | tr -s ' ' '-'`
+      cmd="mv '$x' $newFile"
+      echo "${cmd}"
+      echo "${cmd}" | bash
+   fi	   
+done
+IFS="$OLD_IFS"

@@ -60,7 +60,7 @@
   <style name="html:dtd" foreground="#e6db74"/>
   <style name="html:tag" foreground="#fd971f"/>
   <style name="js:function" foreground="#66d9ef"/>
-  <style name="line-numbers" foreground="#333333" background="#e7e7e7"/>
+  <style name="line-numbers" foreground="#1e3232" background="#e7e7e7"/>
   <style name="perl:builtin" foreground="#a6e22e"/>
   <style name="perl:include-statement" foreground="#fd971f"/>
   <style name="perl:special-variable" foreground="#ae81ff"/>
@@ -91,12 +91,10 @@
   <style name="rubyonrails:symbol" foreground="#ae81ff"/>
   <style name="search-match"  background="#3e3d32" />
   <style name="selection" background="#a06400"/>
-  <style name="text" foreground="#f8f8f2" background="#333333"/>
+  <style name="text" foreground="#ffffff" background="#1e3232"/>
   <style name="xml:attribute-name" foreground="#a6e22e"/>
   <style name="xml:element-name" foreground="#fd971f"/>
   <style name="xml:namespace" foreground="#fd971f"/>
   <style name="xml:tag" foreground="#fd971f"/>
-  
-
 </style-scheme>
 
