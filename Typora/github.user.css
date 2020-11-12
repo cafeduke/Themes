@@ -1,0 +1,107 @@
+/* Core */
+
+body {
+    font-family: Roboto, 'Open Sans', Helvetica Neue, Arial, sans-serif;
+    font-size: 16px;
+    color: rgb(0,0,0);
+    line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-family: "Roboto";
+    margin-bottom: 15px;
+    padding-bottom: 3px;
+}
+
+h1 {  font-size: 32px; color:rgb(0,100,180);  border-bottom: 2px groove rgba(0, 100, 220, 0.5) !important; }
+h2 {  font-size: 26px; color:rgb(0, 64,128);  border-bottom: 2px groove rgba(0, 100, 220, 0.2) !important; }
+h3 {  font-size: 20px; color:rgb(0, 50,100); }
+h4 {  font-size: 18px; color:rgb(0, 40, 80); }
+
+/* Blockquote */
+blockquote {
+    border-left: 3px solid #2196F3;
+    color: Black;
+    font-family: 'Vollkorn', 'Times New Roman';
+    font-style: italic;
+	font-size: 18px;
+}
+
+/**
+ * Syntax Highlight
+ * ---------------- 
+ * Orange : rgb(253,151,31)
+ * Blue   : rgb(90,170,230);
+ * Teal   : rgb(0,240,210)
+ * Green  : rgb(80,220,80)
+ * Parrot : rgb(166,226,46)
+ * Brown  : rgb(206,142,122)
+ * Comment Green : #608B4E
+ */
+ 
+/* Editor view and source view: Code edit */
+.cm-s-inner.CodeMirror-line, .md-fences { background: rgb(0,40,40);  color:White; border-left: 3px solid rgb(120,160,0); }
+.cm-s-inner.CodeMirror-line, .cm-s-inner .CodeMirror-activeline .CodeMirror-line { background-color: rgb(0,40,40); caret-color:White;  }
+.CodeMirror-code, pre.CodeMirror-line { font-family: Consolas;}
+
+/* Code block: Selected text */
+.cm-s-inner .CodeMirror-selected, .cm-s-inner span.CodeMirror-selectedtext {background-color:rgb(160,100,0) !important;}
+
+.cm-s-inner span.cm-meta { color:#ce8e7a; }
+.cm-s-inner span.cm-atom { font-weight: bold; color:rgb(253,151,31); }
+
+
+/* Attribute, Switch, Number, Operator */
+.cm-s-inner span.cm-number    { color: #b478ff; }
+.cm-s-inner span.cm-operator  { color: #b478ff; }
+.cm-s-inner span.cm-attribute { color: #b478ff; }
+
+/* KeyWord. Eg: class, lambda, def */
+.cm-s-inner span.cm-keyword { line-height: 1em; font-weight: bold; color:rgb(90,170,230); }
+.cm-s-inner span.cm-builtin { font-weight: bold; color:rgb(90,170,230); }
+
+/* Method Name , Class name*/
+.cm-s-inner span.cm-def { font-weight: bold; color: rgb(0,240,210); }
+
+/* Variables */
+.cm-s-inner span.cm-variable                             { color: White; }
+.cm-s-inner span.cm-variable-3, .cm-s-inner span.cm-type { color: rgb(0,180,255); }
+
+/* Special Keywords like 'self' */
+.cm-s-inner span.cm-variable-2                           { font-weight: bold;color: rgb(253,151,31); }
+
+/* Comment */
+.cm-s-inner span.cm-comment  { color: #608B4E }
+
+.cm-s-inner span.cm-property { color:White; }
+.cm-s-inner span.cm-string   { color:rgb(80,220,80); }
+.cm-s-inner span.cm-string-2 { color:rgb(80,220,80); }
+.cm-s-inner span.cm-qualifier { color: #555; }
+
+.cm-s-inner span.cm-bracket { color: #cc7; }
+.cm-s-inner span.cm-tag     { font-weight: bold; color:rgb(90,170,230); }
+.cm-s-inner span.cm-link    { color: #219; }
+.cm-s-inner span.cm-error   { color: #f00; }
+
+.cm-s-inner .CodeMirror-activeline-background { background-color: rgb(0,30,30);  }
+.cm-s-inner .CodeMirror-matchingbracket { outline:1px solid grey; color:White !important; }
+.cm-s-inner .CodeMirror-cursor { border-left: 1px solid whitesmoke !important; }
+
+/* Active line for a math block */
+.md-mathblock-input .cm-s-inner .CodeMirror-activeline-background { background-color: rgb(0,30,30) !important; }
+.md-mathblock-input .cm-s-inner .CodeMirror-cursor                { border-left: 2px solid forestgreen !important; }
+
+ /**
+  * Souce code view
+  * ---------------- 
+  */
+.typora-sourceview-on .cm-s-inner.CodeMirror-line { color: White !important; background-color: rgb(0,40,40); font-size: 0.9em; }
+.typora-sourceview-on .cm-header            { color:rgb(0,100,180); }  
+.typora-sourceview-on .cm-header.cm-header1 { color:rgb(0,100,180); }  
+.typora-sourceview-on .cm-header.cm-header2 { color:rgb(0, 64,128); }
+.typora-sourceview-on .cm-header.cm-header3 { color:rgb(0, 50,100); }
+.typora-sourceview-on .cm-header.cm-header4 { color:rgb(0, 40, 80); }
+#typora-source .CodeMirror-gutters          { background-color:rgb(0,64,128);}  
+#typora-source .CodeMirror-linenumber       { color:rgb(255,255,255); visibility: visible;}  

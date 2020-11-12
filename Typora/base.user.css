@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,500,500i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,500i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:300,300i,400,400i,500,500i,700,700i');
+
+#write{
+  max-width: 95%;
+	margin: 0 auto;
+	padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+#typora-source .CodeMirror-lines {
+  max-width: 95%;
+	margin: 0 auto;
+	padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+}

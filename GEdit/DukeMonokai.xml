@@ -36,7 +36,7 @@
   <style name="def:boolean" foreground="#ae81ff"/>
   <style name="def:builtin" foreground="#ae81ff"/>
   <style name="def:character" foreground="#ae81ff"/>
-  <style name="def:comment" foreground="#82a078"/>
+  <style name="def:comment" foreground="#78c88c"/>
   <style name="def:complex" foreground="#ae81ff"/>
   <style name="def:decimal" foreground="#ae81ff"/>
   <style name="def:doc-comment" foreground="#75715e"/>
