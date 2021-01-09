@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+function usage {
+  echo "
+  Usage:
+  ${BASENAME}
+    install|upgrade|search|list|remove <package>
+      Perform operation on <package> using apt. Translates to 'sudo -E -y apt <operation> <arg...>'
+
+    os-version
+      Print Linux version
+
+    open <dir>
+      Spawn a file explorer to view <dir>. Translates to 'gio open <arg...>'
+  " | sed -re "s% {2}%%"
+  exit 0
+}
+
+function dieUsage {
+  usage
+  exit 1
+}
+
+function heading {
+  local mesg=${1}
+  echo "-------------------------------------------------------------------------------------------------"
+  echo "${mesg}"
+  echo "-------------------------------------------------------------------------------------------------"
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+if [[ ${#} -eq 0 || (${#} -eq 1 && ("${1}" == "-h" || "${1}" == "--help")) ]]
+then
+  usage
+fi
+
+op=${1}
+shift
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+case ${op} in
+
+  install|upgrade|remove)
+    cmd="sudo -E apt ${op} -y ${@}"
+    heading "Executing: ${cmd}"
+    ${cmd}
+  ;;
+
+  list|search)
+    cmd="sudo -E apt ${op} ${@}"
+    heading "Executing: ${cmd}"
+    ${cmd}
+  ;;
+
+
+  open)
+    cmd="gio open ${@}"
+    ${cmd}
+  ;;
+
+  os-version)
+    lsb_release -d | cut -d":" -f2 | trim
+  ;;
+
+  *)
+    echo "Unknown option ${op}"
+    dieUsage
+  ;;
+esac
+

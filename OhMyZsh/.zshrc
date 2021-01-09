@@ -1,8 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+echo "Sourcing $HOME/.zshrc"
+
 # Path to your oh-my-zsh installation.
-export ZSH="/home/raghu/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -95,93 +97,16 @@ source $ZSH/oh-my-zsh.sh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-fpath=($fpath "/home/raghu/.zfunctions")
-### 
-### # rbseshad: Space theme customizations
-### SPACESHIP_PROMPT_ORDER=(user dir host git hg package node ruby elm elixir xcode swift golang php rust haskell julia docker aws venv conda pyenv dotnet ember kubecontext exec_time line_sep battery vi_mode jobs exit_code char)
-### SPACESHIP_RPROMPT_ORDER=(time)
-### SPACESHIP_CHAR_SYMBOL='>'
-### SPACESHIP_CHAR_SUFFIX=' '
-### SPACESHIP_TIME_SHOW=true
-### SPACESHIP_DIR_TRUNC=0
-### 
-### # -----------------------------------------------------------------------------
-### # # RBSESHAD: Powerlevel9K customization
-### # # -----------------------------------------------------------------------------
-### # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-### # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(host dir vcs)
-### #
-### # POWERLEVEL9K_DIR_HOME_BACKGROUND='070'
-### # POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='070'
-### # POWERLEVEL9K_DIR_ETC_BACKGROUND='070'
-### # POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='070'
-### #
-### # POWERLEVEL9K_DIR_HOME_FOREGROUND='233'
-### # POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='233'
-### # POWERLEVEL9K_DIR_ETC_FOREGROUND='233'
-### # POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='233'
-### #
-### # POWERLEVEL9K_HOST_REMOTE_BACKGROUND='026'
-### # POWERLEVEL9K_HOST_REMOTE_FOREGROUND='white'
-### # POWERLEVEL9K_HOST_LOCAL_BACKGROUND='026'
-### # POWERLEVEL9K_HOST_LOCAL_FOREGROUND='white'
-### #
-### # POWERLEVEL9K_VCS_CLEAN_FOREGROUND='white'
-### # POWERLEVEL9K_VCS_CLEAN_BACKGROUND='dodgerblue3'
-### # POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='white'
-### # POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='130'
-### # POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
-### # POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='094'
-### # POWERLEVEL9K_VCS_CLOBBERED_BACKGROUND='124'
-### # POWERLEVEL9K_VCS_CLOBBERED_FOREGROUND='white'
-### #
-### # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-### # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="⮁ "
-### #
-### # POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='233233'
-### # # -----------------------------------------------------------------------------
-### 
-### # Set Spaceship ZSH as a prompt
-### #autoload -U promptinit; promptinit
-### #prompt powerlevel9k
-### 
-### # -----------------------------------------------------------------------------
-### # RBSESHAD: Powerlevel9K customization
-### # -----------------------------------------------------------------------------
-### POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-### POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(host dir vcs)
-### 
-### POWERLEVEL9K_DIR_HOME_BACKGROUND='070'
-### POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='070'
-### POWERLEVEL9K_DIR_ETC_BACKGROUND='070'
-### POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='070'
-### 
-### POWERLEVEL9K_DIR_HOME_FOREGROUND='233'
-### POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='233'
-### POWERLEVEL9K_DIR_ETC_FOREGROUND='233'
-### POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='233'
-### 
-### POWERLEVEL9K_HOST_REMOTE_BACKGROUND='026'
-### POWERLEVEL9K_HOST_REMOTE_FOREGROUND='white'
-### POWERLEVEL9K_HOST_LOCAL_BACKGROUND='026'
-### POWERLEVEL9K_HOST_LOCAL_FOREGROUND='white'
-### 
-### POWERLEVEL9K_VCS_CLEAN_FOREGROUND='white'
-### POWERLEVEL9K_VCS_CLEAN_BACKGROUND='dodgerblue3'
-### POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='white'
-### POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='130'
-### POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
-### POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='094'
-### POWERLEVEL9K_VCS_CLOBBERED_BACKGROUND='124'
-### POWERLEVEL9K_VCS_CLOBBERED_FOREGROUND='white'
-### 
-### POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-### POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="⧽ "
-### 
-### POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='233233'
-### # -----------------------------------------------------------------------------
-### 
+fpath=($fpath "${HOME}/.zfunctions")
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+export TERM="xterm-256color"
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-source ~/.profile
+
+autoload -U compinit && compinit
+zmodload -i zsh/complist
+rm -f ~/.zcompdump; compinit
+
+# Source .profile
+# This is required because, some of the .profile definitions seems to be removed
+source $HOME/.profile
