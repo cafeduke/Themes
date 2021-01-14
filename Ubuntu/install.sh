@@ -101,7 +101,9 @@ cp wallpapers/* ${HOME}/Pictures/WallPapers
 cp custom-app-icons/* ${HOME}/Pictures/Icons
 log "Done"
 
+log "Set login screen background image"
+login-screen-bg/set-login-bg.sh --set < login-screen-bg/input.txt
+
 log "Change wallpaper"
 gsettings set org.gnome.desktop.background picture-uri file:///${HOME}/Pictures/WallPapers/ForestGreen01.jpg
-
 
