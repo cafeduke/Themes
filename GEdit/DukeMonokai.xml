@@ -30,16 +30,16 @@
   <style name="css:at-rules" foreground="#fd971f"/>
   <style name="css:color" foreground="#ae81ff"/>
   <style name="css:keyword" foreground="#66d9ef" italic="true"/>
-  <style name="current-line"  background="#506050"/>
+  <style name="current-line"  background="#283c3c"/>
   <style name="cursor" foreground="#f8f8f0"/>
   <style name="def:base-n-integer" foreground="#ae81ff"/>
   <style name="def:boolean" foreground="#ae81ff"/>
   <style name="def:builtin" foreground="#ae81ff"/>
   <style name="def:character" foreground="#ae81ff"/>
-  <style name="def:comment" foreground="#78c88c"/>
+  <style name="def:comment" foreground="#50b450"/>
   <style name="def:complex" foreground="#ae81ff"/>
   <style name="def:decimal" foreground="#ae81ff"/>
-  <style name="def:doc-comment" foreground="#75715e"/>
+  <style name="def:doc-comment" foreground="#50c878"/>
   <style name="def:doc-comment-element" foreground="#75715e"/>
   <style name="def:error" foreground="#f8f8f0" background="#fd971f"/>
   <style name="def:floating-point" foreground="#ae81ff"/>
@@ -89,7 +89,7 @@
   <style name="rubyonrails:simple-interpolation" foreground="#ae81ff"/>
   <style name="rubyonrails:special-variable" foreground="#fd971f"/>
   <style name="rubyonrails:symbol" foreground="#ae81ff"/>
-  <style name="search-match"  background="#3e3d32" />
+  <style name="search-match"  background="#005032" />
   <style name="selection" background="#a06400"/>
   <style name="text" foreground="#ffffff" background="#1e3232"/>
   <style name="xml:attribute-name" foreground="#a6e22e"/>
@@ -97,4 +97,3 @@
   <style name="xml:namespace" foreground="#fd971f"/>
   <style name="xml:tag" foreground="#fd971f"/>
 </style-scheme>
-
