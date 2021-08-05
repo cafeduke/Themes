@@ -10,8 +10,17 @@ function usage {
   echo "
   Usage:
   ${BASENAME}
-    install|upgrade|search|list|remove <package>
+    install|upgrade|remove <package>
       Perform operation on <package> using apt. Translates to 'sudo -E -y apt <operation> <arg...>'
+
+    list <package...>
+      For each <package>, a search is performed among installed packages
+
+    list-regex <package...>
+      For each regex specified in <package>, a case-insensitive substring match is performed among installed packages
+
+    search <package>
+      Perform a case-insensitive substring match among available packages, looking for given <package>
 
     os-version
       Print Linux version
@@ -48,20 +57,53 @@ shift
 # -------------------------------------------------------------------------------------------------
 # Main
 # -------------------------------------------------------------------------------------------------
+
 case ${op} in
 
   install|upgrade|remove)
+
+    # If the first argument is a file and if the file exists then
+    if [[ ! -z "$1" && -e "${PWD}/${1}" ]]
+    then
+      set -- "${PWD}/${1}" "${@:2}"
+    fi
     cmd="sudo -E apt ${op} -y ${@}"
     heading "Executing: ${cmd}"
     ${cmd}
   ;;
 
-  list|search)
-    cmd="sudo -E apt ${op} ${@}"
-    heading "Executing: ${cmd}"
-    ${cmd}
+  list)
+    if [[ ${#} -lt 1 ]]
+    then
+      dieUsage "Package(s) to search for (among installed packages) required."
+    fi
+    heading "Matching packages"
+    apt list --installed "${@}" 2> /tmp/duke.err
   ;;
 
+  list-regex)
+    if [[ ${#} -lt 1 ]]
+    then
+      dieUsage "Package(s) regex to search for (among installed packages) required."
+    fi
+    rm -f /tmp/duke_find.txt
+    for currFind in "$@"
+    do
+      echo "${currFind}" >> /tmp/duke_find.txt
+    done
+    heading "Matching packages"
+    apt list --installed 2> /tmp/duke.err | egrep -i -f /tmp/duke_find.txt
+  ;;
+
+  search)
+    if [[ ${#} -ne 1 ]]
+    then
+      dieUsage "Package to search for required."
+    fi
+    toFind=${@}
+    heading "Matching packages"
+    apt search ${toFind} 2> /tmp/duke.err
+  ;;
 
   open)
     cmd="gio open ${@}"
@@ -77,4 +119,3 @@ case ${op} in
     dieUsage
   ;;
 esac
-
