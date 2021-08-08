@@ -1,0 +1,22 @@
+#!/bin/bash
+
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+if [[ ${#} -ne 1 ]]
+then
+  echo "Usage: ${BASENAME} <url>"
+  exit 1
+fi  
+
+rm -f /tmp/jget_body.txt /tmp/jget_head.txt /tmp/jget_code.txt
+java -jar ${JGET_HOME}/lib/JGet.jar -u "${1}" -sh -o /tmp/jget_body.txt -ho /tmp/jget_head.txt -rco /tmp/jget_code.txt
+. /tmp/jget_code.txt
+if [[ ${ResponseCode} == -1 ]]
+then
+  echo "Error connecting to server. See /tmp/jget_body.txt for details."
+  exit 1
+fi
+cat /tmp/jget_head.txt
+echo ""
+cat /tmp/jget_body.txt | jq
