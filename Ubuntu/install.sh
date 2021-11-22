@@ -81,9 +81,9 @@ log "Install Gnome tweak tool"
 sudo apt install gnome-tweak-tool -y >& install.log
 log "Done"
 
-log "Install theme: MateriaYaru-compact"
+log "Install theme: DukeGlass-2.1.zip"
 mkdir -p ${HOME}/.themes
-unzip -q themes/MateriaYaru-compact.zip -d ${HOME}/.themes
+unzip -q themes/DukeGlass-2.1.zip -d ${HOME}/.themes
 log "Done"
 
 log "Install icon-theme: Yaru-Blue"
@@ -102,7 +102,7 @@ cp custom-app-icons/* ${HOME}/Pictures/Icons
 log "Done"
 
 log "Set login screen background image"
-login-screen-bg/set-login-bg.sh --set < login-screen-bg/input.txt
+sudo login-screen-bg/ubuntu-gdm-set-background --image ${HOME}/Pictures/WallPapers/UbuntuPurplePlain.png
 
 log "Change wallpaper"
 gsettings set org.gnome.desktop.background picture-uri file:///${HOME}/Pictures/WallPapers/ForestGreen01.jpg
