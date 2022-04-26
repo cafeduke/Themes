@@ -12,6 +12,6 @@ Click on the image to see details
 # Download installable (Use appropriate version)
 wget https://raw.githubusercontent.com/cafeduke/Themes/master/VSCode/build/dukedark-0.0.1.vsix
 
-# Install 
+# Install
 code --install-extension dukedark-0.0.1.vsix
 ```

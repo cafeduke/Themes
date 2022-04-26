@@ -43,7 +43,6 @@ PATH_CORE=".:${HOME}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin
 PATH_BIN_DIR="${HOME}/bin/duke-git"
 
 # Dynamically add directories in PROGRAMS_HOME
-mkdir -p ${PROGRAMS_HOME}
 PATH_PROGRAM=""
 for currProgram in $(ls ${PROGRAMS_HOME})
 do
@@ -73,4 +72,4 @@ alias lsdir="ls -d */"
 alias egrep="egrep --color=auto"
 
 # SSH connections
-tab-name Ubuntu >& /dev/null
+tab-name Ubuntu

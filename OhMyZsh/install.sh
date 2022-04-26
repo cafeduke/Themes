@@ -1,64 +1,38 @@
 #!/bin/bash -e
 
-# -------------------------------------------------------------------------------------------------
-# Functions
-# -------------------------------------------------------------------------------------------------
 BASEDIR=$(dirname $(readlink -f ${0}))
-cd ${BASEDIR}
-
-##
-# Display as heading
-#
-# Arguments:
-#   mesg - Messages to be displayed
-##
-function heading {
-  echo ""
-  echo "---------------------------------------------------------------------------------------------------"
-  for mesg in "$@"
-  do
-    echo "${mesg}"
-  done  
-  echo "---------------------------------------------------------------------------------------------------"
-}
-
-##
-# Function executed before exit. Check if everything went fine. If not mention the logs.
-##
-function handleExit () {
-  local status=${?}
-  if [[ ${status} -ne 0 ]]
-  then
-    echo "[ERROR] See ${BASEDIR}/install.log for details."
-    return ${status}
-  fi
-  return 0
-}
-trap handleExit EXIT
-
-function log {
-  local mesg=${1}
-  echo "["$(date)"] ${mesg}" | tee -a install.log
-}
+export THEMES_HOME=$(cd ${BASEDIR}/../ && pwd)
+source ${THEMES_HOME}/common/util.sh
 
 # -------------------------------------------------------------------------------------------------
-# Pre-requisite check
-# -------------------------------------------------------------------------------------------------
-if [[ $(id -u) -ne 0 ]]
-then
-  echo "Run with sudo access"
-  exit 1
-fi
-
-# -------------------------------------------------------------------------------------------------
-# Main
+# sudo
 # -------------------------------------------------------------------------------------------------
 heading "Prompt customization: Oh-My-Zsh theme powerlevel10k" | tee install.log
 
-# Install zsh
-log "Install wget curl git zsh"
-apt install wget curl git zsh -y >& install.log
-log "Done"
+isInstalled wget curl git zsh
+if [[ $? -eq 0 ]]
+then
+  log "Programs 'wget curl git zsh' already installed"
+else
+  if [[ $(id -u) -ne 0 ]]
+  then
+    echo "Dependent programs among  'wget curl git zsh' not installed."
+    echo "Note: Run as sudo first for installing dependencies. Later run as regular user"
+    exit 1
+  fi
+  log "Install wget curl git zsh"
+  apt install wget curl git zsh -y >& install.log
+  log "Done"
+  exit 0
+fi
+
+# -------------------------------------------------------------------------------------------------
+# Regular user
+# -------------------------------------------------------------------------------------------------
+if [[ $(id -u) -eq 0 ]]
+then
+  die "sudo access not required. Run as regular user"
+fi
 
 # Install oh-my-zsh
 log "Install oh-my-zsh"

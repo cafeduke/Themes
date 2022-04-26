@@ -1,0 +1,37 @@
+{
+    "editor.fontFamily": "consolas, 'Roboto Mono', 'DejaVu Sans Mono'",
+    "editor.fontSize": 16,
+    "editor.suggestSelection": "first",
+    "editor.minimap.enabled": false,
+
+    "workbench.colorTheme": "Duke Dark",
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "vscode-great-icons",
+
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true,
+        "**/.class": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "security.workspace.trust.enabled": false,
+    "remove-tabs-on-save.ignoreFileExtensions": [
+        "*.go"
+    ],
+    "extensions.ignoreRecommendations": true,
+    "trailing-spaces.highlightCurrentLine": false,
+
+    "customXmlFormatter.ownTabSize": 2,
+    "customXmlFormatter.splitAttributesByLength": 0,
+    "customXmlFormatter.splitAttributesLimit": 10,
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml",
+        "editor.formatOnSave": true
+    },
+
+}

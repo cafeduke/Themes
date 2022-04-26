@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-echo "Sourcing $HOME/.zshrc"
+# echo "Sourcing $HOME/.zshrc"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -110,3 +110,5 @@ rm -f ~/.zcompdump; compinit
 # Source .profile
 # This is required because, some of the .profile definitions seems to be removed
 source $HOME/.profile
+
+duke sysinfo
