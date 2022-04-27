@@ -18,7 +18,7 @@
 #   - Micro 
 ##
 
-echo "Sourcing $HOME/.profile"
+# echo "Sourcing $HOME/.profile"
 
 # Home Dir
 # --------
