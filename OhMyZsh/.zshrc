@@ -107,8 +107,20 @@ autoload -U compinit && compinit
 zmodload -i zsh/complist
 rm -f ~/.zcompdump; compinit
 
+# -------------------------------------------------------------------------------------------------
+# Raghu custom config
+# -------------------------------------------------------------------------------------------------
+
 # Source .profile
 # This is required because, some of the .profile definitions seems to be removed
 source $HOME/.profile
 
+# HSTR configuration
+alias hh=hstr                                     # hh to be alias for hstr
+setopt histignorespace                            # skip cmds w/ leading space from history
+bindkey -s "\C-r" "\C-a hstr -- \C-j"             # bind hstr to Ctrl-r (for Vi mode check doc)
+export HSTR_CONFIG=raw-history-view,hicolor       # Show normal history view, hicolor
+
+
+# Show system information
 duke sysinfo

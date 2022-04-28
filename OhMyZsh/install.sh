@@ -9,19 +9,20 @@ source ${THEMES_HOME}/common/util.sh
 # -------------------------------------------------------------------------------------------------
 heading "Prompt customization: Oh-My-Zsh theme powerlevel10k" | tee install.log
 
-isInstalled wget curl git zsh
+dependentPrograms="wget curl git zsh hstr"
+isInstalled ${dependentPrograms}
 if [[ $? -eq 0 ]]
 then
-  log "Programs 'wget curl git zsh' already installed"
+  log "Programs '${dependentPrograms}' already installed"
 else
   if [[ $(id -u) -ne 0 ]]
   then
-    echo "Dependent programs among  'wget curl git zsh' not installed."
+    echo "Dependent programs among  '${dependentPrograms}' not installed."
     echo "Note: Run as sudo first for installing dependencies. Later run as regular user"
     exit 1
   fi
-  log "Install wget curl git zsh"
-  apt install wget curl git zsh -y >& install.log
+  log "Install ${dependentPrograms}"
+  apt install ${dependentPrograms} -y >& install.log
   log "Done"
   exit 0
 fi

@@ -15,7 +15,7 @@
 #   - Java
 #   - Python
 #   - Vim
-#   - Micro 
+#   - Micro
 ##
 
 # echo "Sourcing $HOME/.profile"
@@ -70,6 +70,34 @@ alias snap="sudo snap"
 alias hgrep="history | sort -nr -k 1 | sort -u -k 2 | sort -n -k 1 | grep"
 alias lsdir="ls -d */"
 alias egrep="egrep --color=auto"
+alias wget="/snap/bin/wget-snap"
 
 # SSH connections
 tab-name Ubuntu
+
+# -------------------------------------------------------------------------------------------------
+# Oracle config
+# -------------------------------------------------------------------------------------------------
+
+# SSH connections
+alias grf="ssh rbseshad@slc15grf.us.oracle.com"
+alias gqy="ssh rbseshad@slc15gqy.us.oracle.com"
+alias aqq="ssh rbseshad@slc13aqq.us.oracle.com"
+alias cxv="ssh rbseshad@slc09cxv.us.oracle.com"
+alias cwv="ssh rbseshad@slc09cwv.us.oracle.com"
+alias rc1="ssh rbseshad@rbseshad-1.subnet1ad1phx.devweblogicphx.oraclevcn.com"
+alias pc1="ssh rbseshad@prevenka-1.subnet3ad3phx.devweblogicphx.oraclevcn.com"
+alias poolc1="ssh rbseshad@phx11854d1.subnet5ad1phx.devweblogicphx.oraclevcn.com"
+alias poolc2="ssh rbseshad@phx1183e90.subnet4ad1phx.devweblogicphx.oraclevcn.com"
+alias arm="ssh rbseshad@phx3a18qa11.subnet4.devweblogic2phx.oraclevcn.com"
+
+# Dir changes
+alias ps6="cd $HOME/Oracle/Products/OHS/12.2.1.6.0/src/apache"
+alias ps5="cd $HOME/Oracle/Products/OHS/12.2.1.5.0/src/apache"
+alias ps4="cd $HOME/Oracle/Products/OHS/12.2.1.4.0/src/apache"
+alias ps3="cd $HOME/Oracle/Products/OHS/12.2.1.3.0/src/apache"
+alias myenv="source ~/bin/myenv.sh"
+
+# Dir shortcuts
+alias otd="cd ${HOME}/Oracle/Products/OTD"
+alias ohs="cd ${HOME}/Oracle/Products/OHS"
