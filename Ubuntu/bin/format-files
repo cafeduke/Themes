@@ -34,16 +34,15 @@ then
   exit 0
 fi
 
-# Default values
-find=""
-replace=""
-rm=""
-dir="${PWD}"
-regex="false"
-recur="false"
-
-# Parse
+# Create associative array and set defaults
 declare -A arg
+arg["find"]=""
+arg["replace"]=""
+arg["rm"]=""
+arg["dir"]="${PWD}"
+arg["recur"]="false"
+arg["regex"]="false"
+
 while [[ ${#} -gt 0 ]]
 do
   case "$1" in

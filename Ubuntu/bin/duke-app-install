@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+# Source util
+source ${BASEDIR}/duke-util.sh
+
+function usage {
+  echo "Install <package> using apt. Translates to 'sudo -E -y apt install <arg...>'"
+  echo "Usage: ${BASENAME} <package...>"
+  echo ""
+  echo "Examples"
+  echo "--------"
+  echo "${BASENAME} <package-name>      # Install package by name"
+  echo "${BASENAME} <path to .deb file> # Install using a .deb file"
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+if [[ ${#} -eq 1 && ("${1}" == "--help" || "${1}" == "-h") ]]
+then
+  usage
+  exit 0
+fi
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+
+# If arg1 is a file (as against name of a package) then convert it to absolute path
+if [[ ! -z "$1" && -e "${PWD}/${1}" ]]
+then
+  set -- "${PWD}/${1}" "${@:2}"
+fi
+heading "Executing: ${cmd}"
+sudo -E apt install -y "${@}"

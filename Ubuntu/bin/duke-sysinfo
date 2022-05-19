@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+# Source util
+source ${BASEDIR}/duke-util.sh
+
+function usage {
+  echo "Display system information. Requires fastfetch software"
+  echo "${BASENAME}"
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+if [[ ${#} -eq 1 && ("${1}" == "--help" || "${1}" == "-h") ]]
+then
+  usage
+  exit 0
+fi
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+if [[ $(which fastfetch &> /dev/null; echo $?) -ne 0 ]]
+then
+  die "Command 'fastfetch' not found. Please see https://github.com/LinusDierheimer/fastfetch"
+fi
+fastfetch

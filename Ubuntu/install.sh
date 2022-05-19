@@ -57,7 +57,7 @@ fi
 heading "Ubuntu customizations"
 
 log "Install wget curl git"
-apt install wget curl git zsh -y >& install.log
+sudo apt install wget curl git zsh -y >& install.log
 log "Done"
 
 log "Install fonts"
@@ -78,12 +78,12 @@ unzip -q duke-git.zip -d $HOME >& install.log
 log "Done"
 
 log "Install Gnome tweak tool"
-sudo apt install gnome-tweak-tool -y >& install.log
+sudo sudo apt install gnome-tweak-tool -y >& install.log
 log "Done"
 
-log "Install theme: DukeGlass-2.1.zip"
+log "Install theme: DukeYaruDark.zip"
 mkdir -p ${HOME}/.themes
-unzip -q themes/DukeGlass-2.1.zip -d ${HOME}/.themes
+unzip -q themes/DukeYaruDark.zip -d ${HOME}/.themes
 log "Done"
 
 log "Install icon-theme: Yaru-Blue"

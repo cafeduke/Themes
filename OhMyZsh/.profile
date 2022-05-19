@@ -68,11 +68,10 @@ alias mi="micro"
 alias vi="vim"
 alias snap="sudo snap"
 alias hgrep="history | sort -nr -k 1 | sort -u -k 2 | sort -n -k 1 | grep"
-alias lsdir="ls -d */"
 alias egrep="egrep --color=auto"
-alias wget="/snap/bin/wget-snap"
 
-# SSH connections
+# Default tab name
+# ----------------
 tab-name Ubuntu
 
 # -------------------------------------------------------------------------------------------------

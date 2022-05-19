@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+# Source util
+source ${BASEDIR}/duke-util.sh
+
+function usage {
+  echo "Package(s) to search for among installed packages. A substring/regexp match is performed for each <package>"
+  echo "Usage: duke-list [--exact] <package...>"
+  echo ""
+  echo "Options"
+  echo "-------"
+  echo "  --exact : Do not perform substring match. Look for exact package name"
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+if [[ ${#} -eq 1 && ("${1}" == "--help" || "${1}" == "-h") ]]
+then
+  usage
+  exit 0
+fi
+
+doExactMatch="false"
+if [[ "${1}" == "--exact" ]]
+then
+  doExactMatch="true"
+  shift
+fi
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+heading "Matching packages"
+if [[ "${doExactMatch}" == "true" ]]
+then
+  apt list --installed "${@}" 2> /dev/null
+else
+  apt list --installed 2> /dev/null | egrep --color=always $(echo "${@}" | sed -re "s% +%|%g")
+fi
