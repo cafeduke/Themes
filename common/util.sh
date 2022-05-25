@@ -1,8 +1,15 @@
 # -------------------------------------------------------------------------------------------------
 # Environment variables
 # -------------------------------------------------------------------------------------------------
+
+# Note: The BASEDIR and BASENAME will be of the file that is sourcing util.sh
 BASEDIR=$(dirname $(readlink -f ${0}))
-export THEMES_HOME=$(cd ${BASEDIR}/../ && pwd)
+BASENAME=$(basename ${0} | sed -re "s%(.*)\..*%\1%")
+
+if [[ -z "${LOGFILE}" ]]
+then
+  LOGFILE="/tmp/${BASENAME}.log"
+fi
 
 # -------------------------------------------------------------------------------------------------
 # Functions
@@ -31,16 +38,19 @@ function handleExit () {
   local status=${?}
   if [[ ${status} -ne 0 ]]
   then
-    echo "[ERROR] See ${BASEDIR}/install.log for details."
+    echo "[ERROR] See ${LOGFILE} for details."
     return ${status}
   fi
   return 0
 }
 trap handleExit EXIT
 
+##
+# Log message along with timestamp on console as well as install log file
+##
 function log {
   local mesg=${1}
-  echo "["$(date)"] ${mesg}" | tee -a install.log
+  echo "["$(date)"] ${mesg}" | tee -a ${LOGFILE}
 }
 
 ##
@@ -63,7 +73,7 @@ function isInstalledSnap {
     return 0
   else
     return 1
-  fi  
+  fi
 }
 
 # Print message and exit
