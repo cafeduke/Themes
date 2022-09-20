@@ -51,9 +51,7 @@ do
     PATH_PROGRAM="${PATH_PROGRAM}:${PROGRAMS_HOME}/${currProgram}/bin"
   fi
 done
-# Other dirs
-PATH_OTHER="${JGET_HOME}/bin"
-export PATH="${PATH_CORE}:${PATH_BIN_DIR}:${PATH_PROGRAM}:${PATH_OTHER}"
+export PATH="${PATH_CORE}:${PATH_BIN_DIR}:${PATH_PROGRAM}"
 
 # Alias
 # -----
@@ -91,6 +89,7 @@ alias poolc2="ssh rbseshad@phx1183e90.subnet4ad1phx.devweblogicphx.oraclevcn.com
 alias arm="ssh rbseshad@phx3a18qa11.subnet4.devweblogic2phx.oraclevcn.com"
 
 # Dir changes
+alias 14g="cd $HOME/Oracle/Products/OHS/14.1.2.0.0"
 alias ps6="cd $HOME/Oracle/Products/OHS/12.2.1.6.0/src/apache"
 alias ps5="cd $HOME/Oracle/Products/OHS/12.2.1.5.0/src/apache"
 alias ps4="cd $HOME/Oracle/Products/OHS/12.2.1.4.0/src/apache"

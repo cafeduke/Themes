@@ -44,3 +44,26 @@ log "Done"
 # -------------
 bash ${BASEDIR}/install-theme.sh
 
+# Install Locale
+# --------------
+sudo cp ${BASEDIR}/locale /etc/default/locale 
+
+# Install Extensions
+# ------------------
+# Applications Menu
+# Arc Menu
+# Burn My Windows
+# Just Perfection
+# Lock Keys
+# No overview on start-up
+# Unite
+# User Themes
+log "Extracting: ${BASEDIR}/exensions/extensions.zip to ${HOME}/.local/share/gnome-shell"
+unzip -q ${BASEDIR}/exensions/extensions.zip -d ${HOME}/.local/share/gnome-shell
+
+# Install software: mcfly 
+#   - Ctrl-r shall provide the history for searching and executing command
+curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh -o install.sh
+chmod 755 install.sh
+bash install.sh -s -- --git cantino/mcfly
+

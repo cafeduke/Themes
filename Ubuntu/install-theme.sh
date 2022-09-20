@@ -24,7 +24,7 @@ log "Done"
 
 log "Install theme: DukeYaruDark.zip"
 mkdir -p ${HOME}/.themes
-unzip -q themes/DukeYaruDark.zip -d ${HOME}/.themes
+unzip -q themes/DukeGlass-2.1.zip -d ${HOME}/.themes
 log "Done"
 
 log "Install icon-theme: Yaru-Blue"

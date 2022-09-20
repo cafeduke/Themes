@@ -115,12 +115,14 @@ rm -f ~/.zcompdump; compinit
 # This is required because, some of the .profile definitions seems to be removed
 source $HOME/.profile
 
-# HSTR configuration
-alias hh=hstr                                     # hh to be alias for hstr
-setopt histignorespace                            # skip cmds w/ leading space from history
-bindkey -s "\C-r" "\C-a hstr -- \C-j"             # bind hstr to Ctrl-r (for Vi mode check doc)
-export HSTR_CONFIG=raw-history-view,hicolor       # Show normal history view, hicolor
+# MCFly: Serach history using Ctrl-r
+eval "$(mcfly init zsh)"
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_RESULTS=50
+export MCFLY_RESULTS_SORT=LAST_RUN
 
-
+# Theme for bat
+export BAT_THEME="ansi"
 # Show system information
-duke sysinfo
+duke-sysinfo
+

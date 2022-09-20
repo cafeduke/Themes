@@ -1,0 +1,55 @@
+#!/bin/bash -e
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+function usage {
+  echo "Usage: ${BASENAME} <user> <password> <database>"
+  echo "Create <user> with <password>. Create <database>. Grant <database> grant all privileges for <user>."
+  exit 0
+}
+
+function dieUsage {
+  echo "Error ${1}"
+  usage
+  exit 1
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+if [[ ${#} -eq 0 ||  (${#} -eq 1 && ("${1}" == "-h" || "${1}" == "--help")) ]]
+then
+  usage
+fi
+
+if [[ $# -ne 3 ]]
+then
+  dieUsage "Error: Incorrect argument count=${#}"
+fi
+user="${1}"
+password="${2}"
+database="${3}"
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+FILE="/tmp/${BASENAME}.sql"
+rm -f ${FILE}
+
+echo "CREATE DATABASE IF NOT EXISTS \`${database}\`;
+CREATE USER IF NOT EXISTS '${user}'@'localhost' IDENTIFIED BY '${password}';
+GRANT ALL PRIVILEGES ON \`${database}\`.* TO '${user}'@'localhost';
+FLUSH PRIVILEGES;
+ALTER USER '${user}'@'localhost' IDENTIFIED WITH mysql_native_password BY '${password}';
+" > ${FILE}
+
+echo ""
+echo "Executing following SQL"
+echo "-------------------------------------------------------------------------------------------------"
+cat ${FILE}
+echo "-------------------------------------------------------------------------------------------------"
+sudo -E mysql <${FILE}

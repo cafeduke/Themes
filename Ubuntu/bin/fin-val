@@ -1,0 +1,252 @@
+#!/bin/bash -e
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+# Source util
+source $BASEDIR/duke-util.sh
+
+function usage() {
+  echo "Usage: $BASENAME
+  --fcf=<Current free-cash-flow>
+
+  --rate=<CSV having rate of growth>
+
+  --year=<CSV having number of years for each rate of growth>
+
+  --rate-fd=<Returns from safe instrument like fixed depost instead of investing in stock>
+
+  --rate-risk-pp|--rate-rpp=<Rate of returns you expect for perpetuity considering the risk of investment>
+    Higher rates imply risky stock. We would want a risky stock to quickly grow as we are concerned about sustained growth.
+
+  --rate-global-growth-pp|--rate-ggpp=<Growth used to discount perpetual cash flow>
+    The rate at which the world is expected to grow for perpetual calculations
+
+  --mcap=<Marketcap of the stock>
+
+  --price=<Current price of the stock>
+
+  --ignore-margin-safety|--no-mos
+    Do not consider margin of safety. This is done when risk is already factored with higher rate-risk-pp>
+  "
+}
+
+function roundOff {
+  local num=${1}
+  local decimal_places=2
+  if [[ ${#} -eq 2 ]]
+  then
+    decimal_places=${2}
+  fi
+  printf "%0.${decimal_places}f\n" $num
+}
+
+function calc {
+  local expr=${1}
+  local value=$(echo "$expr" | bc -l)
+  roundOff $value
+}
+
+
+function getPVGivenFV {
+  local fv=${1}
+  local r=${2}
+  local n=${3}
+
+  local var_bc="fv=$fv;r=$r;n=$n;"
+  local formula_pv_given_only_fv="fv/((1+r)^n)"
+  local value=$(calc "$var_bc $formula_pv_given_only_fv")
+  roundOff $value
+}
+
+function getNextCashFlow {
+  local fv=${1}
+  local r=${2}
+
+  local value=$(calc "$fv*($r+1)")
+  roundOff $value
+}
+
+function getPerpetualGrowth {
+  local pmt=${1}
+  local r=${2}
+
+  local value=$(calc "$pmt / $r")
+  roundOff $value
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+
+# Init defaults
+mos="true"    # Margin is safety is true by default
+
+# Set variable having the long version of options of format --<opt>.
+# A colon indicates option takes a value
+LONGOPTS="help,fcf:,rate:,year:,rate-fd:,rate-risk-pp:,rate-rpp:,rate-global-growth-pp:,rate-ggpp:,mcap:,price:,ignore-margin-safety,no-mos"
+PARSED=$(getopt --options="" --longoptions=$LONGOPTS --name "$0" -- "$@")
+eval set -- "$PARSED"
+
+while true; do
+  case "$1" in
+
+    --help|-h)
+      usage
+      exit 0
+      ;;
+
+    --fcf)
+      fcf="${2}"
+      shift 2
+      ;;
+
+    --rate)
+      arr_rate=()                                                     # Declare an array
+      mapfile -t arr_rate <<< $(echo "$2" | sed -re "s%,%\n%g")
+      for x in ${!arr_rate[@]}
+      do
+        arr_rate[$x]=$(calc "${arr_rate[$x]}*0.01")
+      done
+      shift 2
+      ;;
+
+    --year)
+      arr_year=()
+      mapfile -t arr_year <<< $(echo "$2" | sed -re "s%,%\n%g")
+      shift 2
+      ;;
+
+    --rate-fd)
+      rate_fd="${2}"
+      rate_fd=$(calc "$rate_fd*0.01")
+      shift 2
+      ;;
+
+    --rate-risk-pp|--rate-rpp)
+      rate_rpp="${2}"
+      rate_rpp=$(calc "$rate_rpp*0.01")
+      shift 2
+      ;;
+
+    --rate-global-growth-pp|--rate-ggpp)
+      rate_ggpp="${2}"
+      rate_ggpp=$(calc "$rate_ggpp*0.01")
+      shift 2
+      ;;
+
+    --mcap)
+      mcap="${2}"
+      shift 2
+      ;;
+
+    --price)
+      price="${2}"
+      shift 2
+      ;;
+
+    --ignore-margin-safety|--no-mos)
+      mos="false"
+      shift
+      ;;
+
+    --)
+      shift;
+      break
+      ;;
+
+    *)
+      echo "Error: Unknown option ${1}"
+      usage
+      exit 1
+      ;;
+
+  esac
+done
+
+heading "Arg"
+echo "fcf=$fcf"
+for i in ${!arr_rate[@]}
+do
+  echo "rate=${arr_rate[$i]} year=${arr_year[$i]}"
+done
+echo "rate-pp=$rate_rpp"
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+arr_fv=()
+arr_pv=()
+fv=0
+prev_fv="$fcf"
+sum_year=0
+sum_pv=0
+for ((i=0; i < ${#arr_rate[@]}; i++))
+do
+  r=${arr_rate[$i]}
+  y=${arr_year[$i]}
+  for ((j=0; j < $y; j++))
+  do
+    ((++sum_year))
+    fv=$(getNextCashFlow $prev_fv $r)
+    pv=$(getPVGivenFV $fv $rate_fd $sum_year)
+    arr_fv+=($fv)
+    arr_pv+=($pv)
+    sum_pv=$(calc "$sum_pv + $pv")
+    prev_fv=$fv
+  done
+done
+
+pmt_for_pp=$(calc "$prev_fv * (1 + $rate_ggpp)")
+rate_real_growth=$(calc "$rate_rpp - $rate_ggpp")
+fv_pp=$(getPerpetualGrowth $pmt_for_pp $rate_real_growth)
+
+pv_pp=$(getPVGivenFV $fv_pp $rate_fd $sum_year)
+my_mcap=$(calc "$sum_pv + $pv_pp")
+
+my_mcap_safe=$my_mcap
+if [[ "${mos}" == "true" ]]
+then
+  my_mcap_safe=$(calc "$my_mcap / 2")
+fi
+
+heading "Future and Present CashFlows"
+rm -f /tmp/$BASENAME.txt
+for ((i=0; i < ${#arr_fv[@]}; i++))
+do
+  printf "%d %0.2f %0.2f\n" $(expr $i + 1) ${arr_fv[$i]} ${arr_pv[$i]} >> /tmp/$BASENAME.txt
+done
+echo ""
+
+column -t /tmp/$BASENAME.txt -o " | " -N "Year,FutureValue,PresentValue" -R "FutureValue,PresentValue"
+
+heading "Valuation after $sum_year years"
+printf "%-60s = %15.2f\n" "FutureValue of CashFlow received  after $sum_year years" $fv
+printf "%-60s = %15.2f\n" "FutureValue of growing perpetuity after $sum_year years" $fv_pp
+echo "---------------------------------------------------------------------------------------------------"
+printf "%-60s = %15.2f\n" "MCAP of company after $sum_year years" $(calc "$fv + $fv_pp")
+
+heading "Valuation today"
+printf "%-60s = %15.2f\n" "Sum of all PresentValue CashFlows" $sum_pv
+printf "%-60s = %15.2f\n" "PresentValue of growing perpetuity" $pv_pp
+echo "---------------------------------------------------------------------------------------------------"
+printf "%-60s = %15.2f\n" "PresentValue of all CashFlows" $my_mcap
+echo "---------------------------------------------------------------------------------------------------"
+if [[ "${mos}" == "true" ]]
+then
+  printf "%-60s = %15.2f\n" "MCAP of company today with 50% margin of safety" $my_mcap_safe
+else
+  printf "%-60s = %15.2f\n" "MCAP of company today without margin of safety" $my_mcap_safe
+fi
+
+
+if [[ ! -z "$mcap" && ! -z "$price"  ]]
+then
+  printf "%-60s = %15.2f\n" "Marketcap of the stock" $mcap
+  echo "---------------------------------------------------------------------------------------------------"
+  printf "%-60s = %15.2f\n" "Current Price" $price
+  printf "%-60s = %15.2f\n" "Fair Price"    $(calc "($my_mcap_safe * $price) / $mcap")
+fi
