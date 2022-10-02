@@ -1,0 +1,22 @@
+---
+BasedOnStyle: WebKit
+ColumnLimit: 0
+IndentWidth: 4
+SpaceAfterCStyleCast: false
+SpacesInContainerLiterals: false
+SpacesInSquareBrackets: false
+BreakBeforeBraces: Allman 
+BraceWrapping:
+  AfterClass: true
+  AfterCaseLabel: true
+  AfterEnum: true
+  AfterFunction: true
+  BeforeCatch: true
+  BeforeElse: true
+  AfterStruct: true
+  AfterObjCDeclaration: true
+  AfterUnion: true  
+  AfterObjCDeclaration: false
+---
+Language: JavaScript
+---

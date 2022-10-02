@@ -137,7 +137,12 @@ else
   prompt_sign=">"
 fi
 export MICRO_TRUECOLOR=1
-export PS1='\[\e[0;92;1m\]`hostname`\[\e[m\] \[\e[0;94;1m\]`pwd`\[\e[0;92;1m\]$prompt_sign\[\e[m\] '
+if [[ -z "${DOCKER_MACHINE_NAME}" ]]
+then
+  export PS1='\[\e[0;92;1m\]`hostname`\[\e[m\] \[\e[0;94;1m\]\w\[\e[0;92;1m\]$prompt_sign\[\e[m\] '
+else
+  export PS1='\[\e[0;92;1m\]${DOCKER_MACHINE_NAME}\[\e[m\] \[\e[0;94;1m\]\w\[\e[0;92;1m\]$prompt_sign\[\e[m\] '
+fi  
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
@@ -145,3 +150,29 @@ fi
 
 # Source .profile
 source $HOME/.profile
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+##
+# HSTR configuration
+##
+# HSTR configuration - add this to ~/.zshrc
+alias hh=hstr                    # hh to be alias for hstr
+export HSTR_CONFIG=hicolor       # get more colors
+shopt -s histappend              # append new history items to .bash_history
+export HISTCONTROL=ignorespace   # leading space hides commands from history
+export HISTFILESIZE=10000        # increase history file size (default is 500)
+export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
+# Options: Use colors, use plain history
+export HSTR_CONFIG=hicolor,raw-history-view
+
+# ensure synchronization between bash memory and history file
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+# if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
+# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
+

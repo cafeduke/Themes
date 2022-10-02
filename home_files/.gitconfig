@@ -1,0 +1,13 @@
+[user]
+	email = raghubs81@gmail.com
+	name = Raghunandan.Seshadri
+[core]
+	editor = micro
+	pager = cat
+[color]
+	ui = true
+[merge]
+	tool = meld
+[filesystem "Oracle Corporation|14.0.1|/dev/mapper/vgubuntu-root"]
+	timestampResolution = 11000 nanoseconds
+	minRacyThreshold = 6011 microseconds
