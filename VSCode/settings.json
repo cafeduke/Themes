@@ -1,37 +1,51 @@
 {
-    "editor.fontFamily": "consolas, 'Roboto Mono', 'DejaVu Sans Mono'",
-    "editor.fontSize": 16,
-    "editor.suggestSelection": "first",
-    "editor.minimap.enabled": false,
+  "editor.fontFamily": "consolas, 'Roboto Mono', 'DejaVu Sans Mono'",
+  "editor.fontSize": 16,
+  "editor.suggestSelection": "first",
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrapColumn": 1000,
+  "editor.wordWrap": "off",
 
-    "workbench.colorTheme": "Duke Dark",
-    "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "vscode-great-icons",
 
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true,
-        "**/.class": true
-    },
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vscode-great-icons",
+  "security.workspace.trust.enabled": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "**/.class": true
+  },
+  "extensions.ignoreRecommendations": true,
+  "trailing-spaces.highlightCurrentLine": false,
 
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "security.workspace.trust.enabled": false,
-    "remove-tabs-on-save.ignoreFileExtensions": [
-        "*.go"
-    ],
-    "extensions.ignoreRecommendations": true,
-    "trailing-spaces.highlightCurrentLine": false,
+  "html.format.templating": true,
+  "html.format.wrapAttributes": "preserve-aligned",
+  "html.format.wrapLineLength": 0,
 
-    "customXmlFormatter.ownTabSize": 2,
-    "customXmlFormatter.splitAttributesByLength": 0,
-    "customXmlFormatter.splitAttributesLimit": 10,
-    "[xml]": {
-        "editor.defaultFormatter": "redhat.vscode-xml",
-        "editor.formatOnSave": true
-    },
+  "[xml]": {
+    "editor.defaultFormatter": "mikeburgh.xml-format",
+    "editor.formatOnSave": true,
+  },
+  "xml.format.maxLineWidth": 0,
+  "xml.format.preserveEmptyContent": true,
+  "xml.format.legacy": true,
 
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.autoIndent": "keep",
+    "editor.formatOnSave": true
+  },
+
+  "[json]": {
+    "editor.autoIndent": "keep",
+    "editor.formatOnSave": true
+  },
+
+  "workbench.colorTheme": "Duke Dark",
 }

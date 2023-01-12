@@ -49,7 +49,7 @@ trap handleExit EXIT
 # Log message along with timestamp on console as well as install log file
 ##
 function log {
-  local mesg=${1}
+  local mesg="${@}"
   echo "["$(date)"] ${mesg}" | tee -a ${LOGFILE}
 }
 
@@ -62,6 +62,8 @@ function isInstalled {
   then
     return 0
   else
+    echo "rbseshad : ${@}"	  
+    log "One or more among ${@} not installed"
     return 1
   fi
 }

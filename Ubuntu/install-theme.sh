@@ -48,6 +48,10 @@ cp wallpapers/* ${HOME}/Pictures/WallPapers
 cp custom-app-icons/* ${HOME}/Pictures/Icons
 log "Done"
 
+log "Install pre-requisite for login screen"
+sudo apt update
+sudo apt install libglib2.0-dev-bin -y
+
 log "Set login screen background image"
 sudo login-screen-bg/ubuntu-gdm-set-background --image ${HOME}/Pictures/WallPapers/UbuntuPurplePlain.png
 
