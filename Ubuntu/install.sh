@@ -10,15 +10,6 @@ source ${THEMES_HOME}/common/util.sh
 cd ${BASEDIR}
 
 # -------------------------------------------------------------------------------------------------
-# Pre-requisite check
-# -------------------------------------------------------------------------------------------------
-if [[ $(id -u) -ne 0 ]]
-then
-  echo "Run with sudo access"
-  exit 1
-fi
-
-# -------------------------------------------------------------------------------------------------
 # Main
 # -------------------------------------------------------------------------------------------------
 
@@ -28,27 +19,57 @@ log "Install wget curl git"
 sudo apt install wget curl git zsh -y >& ${LOGFILE}
 log "Done"
 
-# Install bin files
+# Home binary files
 # -----------------
-bash ${BASEDIR}/install-bin.sh
 
-# Install Fonts
-# -------------
-log "Install fonts"
-mkdir -p ${HOME}/.fonts
-cp fonts/* ${HOME}/.fonts
-fc-cache -f -v >& ${LOGFILE}
+log "Install bin"
+unzip -o -q data/bin.zip -d ${HOME}
 log "Done"
+
+if [[ ! -d "${HOME}/duke-git" ]]
+then
+  log "Install duke-git"
+  wget https://github.com/cafeduke/duke-git/archive/master.zip -O duke-git.zip >& ${LOGFILE}
+  unzip -o -q duke-git.zip -d $HOME >& ${LOGFILE}
+  mv $HOME/duke-git-master $HOME/duke-git
+  log "Done"
+fi
+
+# Install home dot files (HOME/.<dir>)
+# ------------------------------------
+log "Install hidden home files"
+unzip -o -q data/dot.zip -d ${HOME}
+log "Done"
+
+for x in fonts icons themes ssh gnupg local config
+do
+  log "Install .${x}"
+  unzip -o -q data/dot_${x}.zip -d ${HOME}
+  log "Done"
+done
+
+# Install Pictures
+# ----------------
+log "Install Pictures"
+unzip -o -q data/Pictures.zip -d ${HOME}
+log "Done"
+
 
 # Install theme
 # -------------
 bash ${BASEDIR}/install-theme.sh
 
-# Install Locale
+# Install locale
 # --------------
-sudo cp ${BASEDIR}/locale /etc/default/locale 
+sudo cp ${BASEDIR}/locale /etc/default/locale
 
-# Install Extensions
+# Workaround: Ensure login screen on external monitor
+# ---------------------------------------------------
+# https://askubuntu.com/questions/1043337/is-there-to-make-the-login-screen-appear-on-the-external-display-in-18-04
+sudo cp ~/.config/monitors.xml ~gdm/.config/monitors.xml
+sudo chown gdm:gdm ~gdm/.config/monitors.xml
+
+# Install extensions
 # ------------------
 # Applications Menu
 # Arc Menu
@@ -58,12 +79,12 @@ sudo cp ${BASEDIR}/locale /etc/default/locale
 # No overview on start-up
 # Unite
 # User Themes
-log "Extracting: ${BASEDIR}/exensions/extensions.zip to ${HOME}/.local/share/gnome-shell"
-unzip -q ${BASEDIR}/exensions/extensions.zip -d ${HOME}/.local/share/gnome-shell
+log "Extracting: ${BASEDIR}/extensions/extensions.zip to ${HOME}/.local/share/gnome-shell"
+unzip -o -q ${BASEDIR}/extensions/extensions.zip -d ${HOME}/.local/share/gnome-shell
 
-# Install software: mcfly 
+# Install software: mcfly
 #   - Ctrl-r shall provide the history for searching and executing command
-curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh -o install.sh
-chmod 755 install.sh
-bash install.sh -s -- --git cantino/mcfly
+curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh -o install_mcfly.sh
+chmod 755 install_mcfly.sh
+sudo ./install_mcfly.sh -s -- --git cantino/mcfly
 
