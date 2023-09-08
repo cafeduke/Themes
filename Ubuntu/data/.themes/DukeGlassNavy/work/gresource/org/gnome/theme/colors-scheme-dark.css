@@ -1,0 +1,82 @@
+/*
+ ##################################################################################################
+  Duke customizations
+
+  --------------------------------------------------------------------------------------------------
+  Color        Hex       RGB                Class
+  --------------------------------------------------------------------------------------------------
+  Orange       #B46400   rgb(180, 100, 0)   color_accent, sidebar_bg_color_hover
+  Blue         #0064A0   rgb(0, 100, 160)   headerbar_color
+  BrightOrange #B47800   rgb(180, 120, 0)   headerbar_selected_accent_color
+  BlueGlassA   #78A0C8   rgba(0,40,80,0.8)  sidebar_bg_color, menu_popover_bg_color
+                         rgba(0,30,100,0.9) global_bg_color, nautilus_notebook_bg_color
+  White                                     headerbar_text_color
+
+ ##################################################################################################
+ */
+
+
+/******************************************************************************/
+/*(((((((( defining accent color )))))*/
+
+@define-color color_accent #b46400;
+@define-color disabled_color_accent mix(shade(@color_accent, 0.60), shade(@normal_button_color, 0.85), 0.3);
+
+/*******************************************************************************/
+/*(((((((( defining headerbar colors )))))*/
+
+@define-color headerbar_color rgb(0,100,160);
+@define-color headerbar_text_color white;
+@define-color headerbar_selected_text_color #FFFFFF;
+@define-color headerbar_text_shadow_color /*transparent;*/ #000000;
+@define-color headerbar_selected_text_shadow_color #000000;
+@define-color headerbar_selected_accent_color #B47800;
+
+/******************************************************************************/
+/*(((((((( defining color for bottom edge )))))*/
+
+@define-color bottom_edge_color @headerbar_color;
+
+/******************************************************************************/
+/*(((((((( defining normal button color )))))*/
+
+@define-color normal_button_color #3d4a4a;
+
+/******************************************************************************/
+/*(((((((( defining colors for other widgets )))))*/
+
+@define-color text_color #FFFFFF;
+@define-color selected_text_color #FFFFFF;
+@define-color text_shadow_color #000000;
+@define-color disabled_text_color #8b8b8b;
+
+/*******************************************************************************/
+/*(((((((((( defining colors of the sidebar )))))))))*/
+
+@define-color sidebar_bg_color rgba(0,40,80,0.8);
+@define-color sidebar_bg_color_hover @color_accent;
+@define-color sidebar_color_accent @color_accent;
+@define-color sidebar_text_color #FFFFFF;
+@define-color sidebar_text_color_hover #FFFFFF;
+@define-color sidebar_selected_text_color #FFFFFF;
+
+/*******************************************************************************/
+/*(((((((((( defining bg-color of menus/popover )))))))))*/
+
+@define-color menu_popover_bg_color rgba(0,40,80,0.8);
+@define-color menu_popover_color_accent @sidebar_color_accent;
+
+/*******************************************************************************/
+/*(((((((((( defining windows background color )))))))))*/
+
+@define-color global_bg_color rgba(0,60,100,0.9);
+@define-color nautilus_notebook_bg_color rgba(0,60,100,0.9);
+
+/*******************************************************************************/
+/*(((((((( defining the colors of the windowbuttons )))))*/
+
+@define-color minimize_color rgb(100,200,60);
+@define-color maximize_color rgb(240,180,60);
+@define-color close_color rgb(230,90,80);
+@define-color restore_color @maximize_color;
+@define-color backdrop_color #D1D1E1;

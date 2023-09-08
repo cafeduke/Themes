@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="">
+    <file>org/gnome/theme/graphics/titlebutton-maximize-dark.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-close-dark.svg</file>
+    <file>org/gnome/theme/graphics/blurred6_black.png</file>
+    <file>org/gnome/theme/graphics/combo-box-arrow@2.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-minimize.svg</file>
+    <file>org/gnome/theme/graphics/blurred6.png</file>
+    <file>org/gnome/theme/graphics/combo-box-arrow-disabled.svg</file>
+    <file>org/gnome/theme/graphics/list-remove-symbolic.svg</file>
+    <file>org/gnome/theme/graphics/Null.svg</file>
+    <file>org/gnome/theme/graphics/background.png</file>
+    <file>org/gnome/theme/graphics/object-select-symbolic.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-minimize@2.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-close.svg</file>
+    <file>org/gnome/theme/graphics/blurredT.png</file>
+    <file>org/gnome/theme/graphics/titlebutton-close@2.svg</file>
+    <file>org/gnome/theme/graphics/combo-box-arrow.svg</file>
+    <file>org/gnome/theme/graphics/bullet-symbolic.svg</file>
+    <file>org/gnome/theme/graphics/object-select-symbolic@2.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-symbolic.svg</file>
+    <file>org/gnome/theme/graphics/combo-box-arrow-disabled@2.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-minimize-dark.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-maximize@2.svg</file>
+    <file>org/gnome/theme/graphics/titlebutton-maximize.svg</file>
+    <file>org/gnome/theme/window-buttons-dark-rounded.css</file>
+    <file>org/gnome/theme/gtk.css</file>
+    <file>org/gnome/theme/colors-scheme-dark.css</file>
+    <file>org/gnome/theme/main-dark.css</file>
+  </gresource>
+</gresources>
