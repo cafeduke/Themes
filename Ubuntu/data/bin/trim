@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+function dieUsage {
+  local mesg=${1}
+  echo "Error: ${mesg}"
+  usage
+  exit 1
+}
+
+function usage {
+  echo "Usage: ${BASENAME} [--start] [<file..>]"
+  echo ""
+  echo "Description"
+  echo "-----------"
+  echo "Trim white space from each line of all the files provided."
+  echo "${BASENAME} can take also input from pipe. Eg: cat a.txt | trim"
+  echo ""
+  echo "Options"
+  echo "-------"
+  echo "  --start : Also trim whitespace at the beginning of each line"
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+if [[ ${#} -eq 1 && ("${1}" == "-h" || "${1}" == "--help") ]]
+then
+  usage
+  exit 0
+fi
+
+trimStart=false
+if [[ "$1" == "--start" ]]
+then
+  trimStart=true
+  shift
+fi
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+
+# Note: Use eval to run a command with pipes
+# ------------------------------------------
+# Link: https://askubuntu.com/questions/476523/build-command-by-concatenating-string-in-bash
+# In order to prevent a lot of if-else we can construct a command based on options and then execute the command
+# However, this way pipe (| and all other arguments) will all be sent as arguments to the first command. To prevent this use eval
+
+trimStartCmd=''
+if [[ "${trimStart}" == "true" ]]
+then
+  trimStartCmd='-e "s%^[ \t]+%%"'
+fi
+
+if [[ ${#} -eq 0 ]]
+then
+  cmd='cat - | sed -r -e "s%[ \t]+$%%" '${trimStartCmd}
+  eval "${cmd}"
+else
+  for file in "${@}"
+  do
+    cmd='sed -i -r -e "s%[ \t]+$%%" '${trimStartCmd}' '${file}
+    eval "${cmd}"
+  done
+fi

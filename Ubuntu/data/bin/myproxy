@@ -1,0 +1,4 @@
+export HTTP_PROXY=http://www-proxy.us.oracle.com:80
+export HTTPS_PROXY=${HTTP_PROXY}
+export http_proxy=${HTTP_PROXY}
+export https_proxy=${HTTP_PROXY}

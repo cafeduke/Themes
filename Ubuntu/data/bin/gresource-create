@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+function usage {
+  echo "Create <theme-name>.gresource file using all files under PWD"
+  echo ""
+  echo "Usage: [<theme-name>]"
+  echo "Example: ${BASENAME} DukeGlass"
+  exit 0
+}
+
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+
+if [[ ${#} -eq 1 && ("${1}" == "-h" || "${1}" == "--help") ]]
+then
+  usage
+fi
+
+# Set default
+fileXml="theme.xml"
+if [[ ${#} -eq "1" ]]
+then
+  fileXml="${1}.xml"
+fi
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/theme">' > ${fileXml}
+
+for curr in `find . -type f`
+do
+   curr=`echo ${curr} | sed "s%./%%"`
+   echo "    <file>$curr</file>" >> ${fileXml}
+done
+
+echo '  </gresource>
+</gresources>'   >> ${fileXml}
+glib-compile-resources ${fileXml}

@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+function usage {
+  echo "Extract <name>.gresource file in PWD/gresource"
+  echo "For each path in listing 'gresource list <file>' the prefix shall be stripped. The resultant file shall be created in PWD/gresource"
+  echo ""
+  echo "Usage: ${BASENAME} <file> <prefix>"
+  echo "Example: ${BASENAME} gtk.gresource /com/ubuntu/themes/Yaru-blue-dark/3.0"
+  exit 0
+}
+
+##
+# Print the error message, usage and exit. A callback to function by name 'usage' is made if it exists.
+#
+# Arguments:
+#   mesg - Error message
+##
+function dieUsage {
+  local mesg=${1}
+  echo "Error: ${mesg}"
+  if [[ $(function_exists "usage") -eq 0 ]]
+  then
+    usage
+  fi
+  exit 1
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+
+if [[ ${#} -eq 1 && ("${1}" == "-h" || "${1}" == "--help") ]]
+then
+  usage
+fi
+
+if [[ ${#} -ne 2 ]]
+then
+   dieUsage "Invalid argument count = ${#}"
+fi
+
+fileResource=${1}
+rmPrefix=${2}
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+for path in $(gresource list ${fileResource})
+do
+  pathResource="gresource/"$(echo "${path}" | sed "s%${rmPrefix}%%" | sed "s%^/%%")
+  echo "Created: ${pathResource}"
+  mkdir -p $(dirname ${pathResource})
+  gresource extract ${fileResource} ${path} > ${pathResource}
+done
+

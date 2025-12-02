@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------------------------------------
+BASEDIR=$(dirname $(readlink -f ${0}))
+BASENAME=$(basename ${0})
+
+function dieUsage {
+  local mesg=${1}
+  echo "Error: ${mesg}"
+  usage
+  exit 1
+}
+
+function usage {
+  echo "Usage: ${BASENAME} [ --plain ] <string-pattern> [<file-name-pattern>] [ -- <options for grep> ]"
+  echo ""
+  echo "Description"
+  echo "-----------"
+  echo "Recursively go through the files that match <file-name-pattern> to see if <string-pattern> is found."
+  echo ""
+  echo "Options"
+  echo "-------"
+  echo "  --plain  : No colors. No heading"
+}
+
+# -------------------------------------------------------------------------------------------------
+# Parse Arg
+# -------------------------------------------------------------------------------------------------
+
+if [[ ${#} -eq 1 && ("${1}" == "-h" || "${1}" == "--help") ]]
+then
+  usage
+  exit 0
+fi
+
+color="--color=always"
+plain="false"
+# Extract special options
+if [[ "${1}" == "--plain" ]]
+then
+  plain="true"
+  color="--color=never"
+  shift
+fi
+
+# Capture options and remove them from command line
+options=""
+if [[ "$@" =~ " -- " ]]
+then
+  # Remove everything before ' -- ' to get options
+  options=$(echo "$@" | sed -re "s%.*\-\- +%%")
+  set $(echo "$@" | sed -re "s% \-\- .*%%")
+fi
+
+# Extract
+if [[ ${#} -eq 1 ]]
+then
+  patternString="${1}"
+  patternFile="*"
+  shift
+elif [[ ${#} -eq 2 ]]
+then
+  patternString="${1}"
+  patternFile="${2}"
+  shift 2
+fi
+
+# -------------------------------------------------------------------------------------------------
+# Main
+# -------------------------------------------------------------------------------------------------
+
+if [[ "$plain" == "false" ]]
+then
+  echo "# -------------------------------------------------------------------------------------------------"
+  echo '# grep -r '${color}' --regexp="'${patternString}'" --include="'${patternFile}'" '${options}
+  echo "# -------------------------------------------------------------------------------------------------"
+fi
+
+if [[ -z "${options}"  ]]
+then
+  grep -r ${color} --regexp="${patternString}" --include="${patternFile}"
+else
+  grep -r ${color} --regexp="${patternString}" --include="${patternFile}" "${options}"
+fi
+
